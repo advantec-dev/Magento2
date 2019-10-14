@@ -66,10 +66,11 @@ RUN apt-get update \
 
 # Install Node, NVM, NPM and Grunt
 
-RUN curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh | sh
+RUN curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh | bash - \
+    && sh nodesource_setup.sh
 RUN apt-get install -y nodejs build-essential
-RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.35.0/install.sh | sh
-RUN npm i -g grunt-cli yarn
+RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.35.0/install.sh | sh \
+    && npm i -g grunt-cli yarn
 
 # Install Composer
 
